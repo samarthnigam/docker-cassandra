@@ -1,0 +1,19 @@
+version: '3'  #choose version as per your need
+
+services:
+  cassandra:
+    image: cassandra:latest
+    container_name: cassandra-db
+    ports:
+      - "9042:9042"
+    environment:
+      - CASSANDRA_USER=admin
+      - CASSANDRA_PASSWORD=admin
+    volumes:
+      - /home/samarthnigam/projects/docker-cassandra/data:/var/lib/cassandra
+    networks: 
+      - local_sams_shared_testing_network
+
+networks:
+  local_sams_shared_testing_network:
+    external: true
